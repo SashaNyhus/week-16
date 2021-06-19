@@ -36,8 +36,6 @@ class Dog:
         trait = input(f"Enter the {trait} of the dog: ")
         return trait
 
-    def printNameDisplay(self, index):
-        print(f"{index}. {self.fullName}")
 
     def printInfo(self):
         print(
@@ -52,9 +50,6 @@ class Dog:
 
 def getNewDog():
     newDogInfo = []
-    def addTraitInput(trait):
-        newDogInfo.append(input(trait))
-        return
     random = input("random dog? y/n")
     if random == "y":
         newDog = Dog()
@@ -66,10 +61,6 @@ def getNewDog():
     return newDog
         
 
-        
-
-
-
 def initializeDogList():
     dogsList = []
     while(len(dogsList) < 5):
@@ -79,7 +70,7 @@ def initializeDogList():
 
 def printList(currentList):
     for index, dogEntry in enumerate(currentList):
-        print(f"{int(index + 1)}. " + dogEntry.fullName)
+        print(f"{index + 1}. " + dogEntry.fullName)
     return
 
 

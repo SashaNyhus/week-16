@@ -1,6 +1,7 @@
 import dogData
 import random
 
+
 class Dog:
 
     def __init__(self, manualInput=False):
@@ -10,7 +11,7 @@ class Dog:
         self.weight = self.getTrait("weight", manualInput)
         self.breed = self.getTrait("breed", manualInput)
         self.age = self.getTrait("age", manualInput)
-        self.color = self.getTrait("color", manualInput) 
+        self.color = self.getTrait("color", manualInput)
         self.condition = self.getTrait("condition", manualInput)
 
     def getTrait(self, traitName, manualInput):
@@ -36,7 +37,6 @@ class Dog:
         trait = input(f"Enter the {trait} of the dog: ")
         return trait
 
-
     def printInfo(self):
         print(
             "PATIENT INFORMATION \n"
@@ -47,6 +47,7 @@ class Dog:
             f"Color: {self.color} \n"
             f"Condition: {self.condition}"
         )
+
 
 def getNewDog():
     newDogInfo = []
@@ -59,7 +60,7 @@ def getNewDog():
     print("New patient added:")
     newDog.printInfo()
     return newDog
-        
+
 
 def initializeDogList():
     dogsList = []

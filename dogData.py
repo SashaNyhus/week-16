@@ -1,4 +1,4 @@
-maleFirstName = [
+maleName = [
     "Walter",
     "Leonard",
     "Hugo",
@@ -11,7 +11,7 @@ maleFirstName = [
     "Alex"
 ]
 
-femaleFirstName = [
+femaleName = [
     "Martha",
     "Sabrina",
     "Rachel",
@@ -24,7 +24,7 @@ femaleFirstName = [
     "Lola"
 ]
 
-lastName = [
+surname = [
     "Drake",
     "Morris",
     "Wallace",

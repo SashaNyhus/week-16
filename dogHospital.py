@@ -3,21 +3,38 @@ import random
 
 class Dog:
 
-    def __init__(self, firstName="", lastName="", weight="", breed="", age="", color="", condition=""):
-        self.firstName = firstName or self.getRandomTrait("firstName")
-        self.lastName = lastName or self.getRandomTrait("lastName")
-        self.fullName = f"{self.firstName} {self.lastName}"
-        self.weight = weight or random.randrange(3, 100)
-        self.breed = breed or self.getRandomTrait("breed")
-        self.age = age or random.randrange(1, 17)
-        self.color = color or self.getRandomTrait("color")
-        self.condition = condition or self.getRandomTrait("condition")
+    def __init__(self, manualInput=False):
+        self.name = self.getTrait("name", manualInput)
+        self.surname = self.getTrait("surname", manualInput)
+        self.fullName = f"{self.name} {self.surname}"
+        self.weight = self.getTrait("weight", manualInput)
+        self.breed = self.getTrait("breed", manualInput)
+        self.age = self.getTrait("age", manualInput)
+        self.color = self.getTrait("color", manualInput) 
+        self.condition = self.getTrait("condition", manualInput)
+
+    def getTrait(self, traitName, manualInput):
+        newTrait = ""
+        if manualInput:
+            newTrait = self.inputTrait(traitName)
+        if newTrait == "":
+            if traitName == "weight":
+                newTrait = random.randrange(3, 100)
+            elif traitName == "age":
+                newTrait = random.randrange(1, 17)
+            else:
+                newTrait = self.getRandomTrait(traitName)
+        return newTrait
 
     def getRandomTrait(self, traitName):
-        if traitName == "firstName":
-            traitName = random.choice(["maleFirstName", "femaleFirstName"])
+        if traitName == "name":
+            traitName = random.choice(["maleName", "femaleName"])
         randomTrait = random.choice(getattr(dogData, traitName))
         return randomTrait
+
+    def inputTrait(self, trait):
+        trait = input(f"Enter the {trait} of the dog: ")
+        return trait
 
     def printNameDisplay(self, index):
         print(f"{index}. {self.fullName}")
@@ -43,14 +60,7 @@ def getNewDog():
         newDog = Dog()
     else:
         print("leave any field blank to randomize")
-        addTraitInput("First Name: ")
-        addTraitInput("Last Name: ")
-        addTraitInput("Weight: ")
-        addTraitInput("Breed: ")
-        addTraitInput("Age: ")
-        addTraitInput("Color: ")
-        addTraitInput("Condition: ")
-        newDog = Dog(*newDogInfo)
+        newDog = Dog(True)
     print("New patient added:")
     newDog.printInfo()
     return newDog

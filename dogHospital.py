@@ -5,6 +5,8 @@ import random
 class Dog:
 
     def __init__(self, manualInput=False):
+        if manualInput:
+            print("leave any field blank to randomize")
         self.name = self.getTrait("name", manualInput)
         self.surname = self.getTrait("surname", manualInput)
         self.fullName = f"{self.name} {self.surname}"
@@ -27,15 +29,15 @@ class Dog:
                 newTrait = self.getRandomTrait(traitName)
         return newTrait
 
+    def inputTrait(self, trait):
+        trait = input(f"Enter the {trait} of the dog: ")
+        return trait
+        
     def getRandomTrait(self, traitName):
         if traitName == "name":
             traitName = random.choice(["maleName", "femaleName"])
         randomTrait = random.choice(getattr(dogData, traitName))
         return randomTrait
-
-    def inputTrait(self, trait):
-        trait = input(f"Enter the {trait} of the dog: ")
-        return trait
 
     def printInfo(self):
         print(
@@ -55,7 +57,6 @@ def getNewDog():
     if random == "y":
         newDog = Dog()
     else:
-        print("leave any field blank to randomize")
         newDog = Dog(True)
     print("New patient added:")
     newDog.printInfo()

@@ -69,5 +69,27 @@ def arrayStats():
     return
 
 
-arrayStats()
+def guessingGame():
+    theNumber = random.randrange(1, 10)
+    theGuess = int(input("Guess a number from 1-10 "))
+    if theGuess == theNumber:
+        print(f"Somehow, you guessed right. The number was {theNumber}")
+    elif (theGuess - 2 == theNumber) or (theGuess - 1 == theNumber):
+        print(f"{theGuess} is too high. The number was {theNumber}.")
+    elif (theGuess + 2 == theNumber) or (theGuess + 1 == theNumber):
+        print(f"{theGuess} is too low. The number was {theNumber}.")
+    else:
+        print(f"WRONG!! The number was {theNumber}, not {theGuess}")
+    return
 
+
+def main():
+    choice = input("Array (1) or Guessing Game (2)? (0 to cancel)")
+    if choice == "1":
+        arrayStats()
+    elif choice == "2":
+        guessingGame()
+    return
+
+
+main()
